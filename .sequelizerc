@@ -1,0 +1,12 @@
+const path = require('path');
+const glob = require('glob');
+
+const modelsPath = path.resolve('./src/modules/**/*.model.js');
+const models = glob.sync(modelsPath);
+
+module.exports = {
+    'config': path.resolve('./src/database/db.config.js'),
+    'models-path': models,
+    // 'seeders-path': path.resolve('./src/config/database/seeders'),
+    'migrations-path': path.resolve('./migrations'),
+};

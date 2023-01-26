@@ -1,0 +1,64 @@
+POST http://localhost:8000/api/users/signup
+Content-Type: application/json
+
+{
+    "first_name": "To sedfs",
+    "last_name": "To sedfs",
+    "email": "ao.doerer@gmail.com",
+    "password":"Denis@600",
+    "dob":"1995-10-30",
+    "phone_number":"01342505250",
+    "gender":"Male"
+}
+
+###
+POST http://localhost:8000/api/users/login
+Content-Type: application/json
+
+{
+    "email":"ao.doerer@gmail.com",
+    "password":"Denis@700"
+}
+
+
+### return all the users with default limit of 10
+GET http://localhost:8000/api/users
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NjMxMzc2OTIsInN1YiI6IjYzMjE2NzJlYjI3MzA1Njg0MmM5MGE5MSIsIm5hbWUiOiJUbyBzZWRmcyIsImVtYWlsIjoiYW8uZG9lcmVyQGdtYWlsLmNvbSIsInBob25lIjoiMDEzNDI1MDUyNTAiLCJleHAiOjE2NjMxMzc2OTN9.L00LfQDNOJAi39TroRKMqyoAu82hzz3EGSTWoBJe2WQ9Z-iGtV34e1AmdAJXsKHFVbuAMvdZfi5I-hh0cLXygRTtmc0f65bFx5R6i8TVsWO8O1i3MmMYcLQzb-Vms1Zs4suyJ9h-DijhSdEbc3mwYFLrJlDtHnQFHNo5zdYF5bE5hvR9mAw13S-z20QQZvucXOLR51AQn0BhjaGDVFwJ8O-3SNgRxE9ehPtysJh3QatwoMUGb8kSLBQQwIMlby3xAue3Y9NNQVl1q2OOfldZGqbeymrkT7Nwy81XVO3JuJFJFY5yEMBgUC4XRk6tmdMTiszfPr3CNzFsOaxm-zJ29ePbdPDPHhmPG0R5DqbpGVuI5BCZIrBjdxzUhKUL2tnoLDFgiFXH8M_8mnhBduoYfLxY0NS_HXvhdzgI5PwHCluAoMS5GAZIuQcwFa4C-nlj8ICOXKBZoXwEtoWUfn5G279cNfeLQZmRK-Z6qMw7XeqbYTIowObKmEb1DK5o0J8jetZ4xqtIcGhlq0B45W9uS_S-lpR5ao9-mNQWubey6ZsS1_vvyRfeu30yPhXA2euCPhKU9E5JqWCCfTrizkoD6As6gPOhnqoiwzRFDngdoZZR2plVaLY0Mvi0fkK9G-fTGnaVCLsX6eKHEU7Q9GTf_MCA6nMXLqJqBvmGEODTGno
+
+#####
+# provide page and limit to get the users in the page or default page is 1 and limit is 10
+GET http://localhost:8000/api/users?page=1&limit=1
+
+
+### if q is provided then it will return the users with the name containing the q || the email containing the q || the phone number containing the q
+GET http://localhost:8000/api/users?q=To s
+
+### filter by date
+GET http://localhost:8000/api/users?filter[startDate]=2020-01-01&filter[endDate]=2022-04-31
+
+### search by id
+GET http://localhost:8000/api/users/1028044654
+
+
+###
+PUT http://localhost:8000/api/users/1028044654
+Content-Type: application/json
+
+{
+    "phone_number": 7878787,
+    "designetion": "Crew"
+}
+
+### 
+PATCH http://localhost:8000/api/users/1028044654
+Content-Type: application/json
+
+{
+    "oldPassword":"Denis@600",
+    "newPassword": "Denis@700",
+    "email":"ao.doerer@gmail.com"
+}
+
+
+###
+DELETE http://localhost:8000/api/users/61bf491fbc523074921dd95e
